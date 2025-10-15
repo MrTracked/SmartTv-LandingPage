@@ -1,81 +1,397 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartTV Official</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SmartTV Premium — SmartTV Official</title>
   <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      overflow-x: hidden;
+    :root{
+      --bg-1: #000;
+      --gold: #ffd700;
+      --pink: #ff66cc;
+      --muted: #bfbfbf;
+      --card: #0f0f10;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 14px;
+    }
+    /* Reset & layout */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(800px 400px at 50% 10%, rgba(255,215,0,0.06), rgba(255,105,180,0.04) 28%, transparent 40%), var(--bg-1);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px;
     }
 
-    header {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #ffd700, #ff7adf);
+    .wrap{
+      max-width:980px;
+      margin: 18px auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:18px;
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+
+    /* header / logo */
+    .brand{
+      text-align:center;
+      margin-bottom:8px;
+      font-weight:700;
+      letter-spacing:0.6px;
+      font-size:1.5rem;
+      background: linear-gradient(90deg, var(--gold), var(--pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
     }
 
-    img {
-      max-width: 80%;
-      height: auto;
-      filter: drop-shadow(0 0 30px rgba(255, 192, 203, 0.4))
-              drop-shadow(0 0 60px rgba(255, 215, 0, 0.4));
-      margin-bottom: 1.5rem;
-      transition: transform 0.4s ease;
+    .subtle{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.95rem;
+      margin-bottom:18px;
     }
 
-    img:hover {
-      transform: scale(1.03);
+    /* hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
     }
 
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      color: #f5f5f5;
+    @media (max-width:900px){
+      .hero{ grid-template-columns: 1fr; text-align:center; }
     }
 
-    .btn {
-      background: linear-gradient(90deg, #ffcc00, #ff66cc);
-      color: #000;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    .hero-left{
+      padding-right:6px;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    .eyebrow{
+      display:inline-block;
+      padding:6px 10px;
+      background:linear-gradient(90deg, rgba(255,215,0,0.08), rgba(255,105,180,0.06));
+      color:var(--gold);
+      border-radius:999px;
+      font-weight:600;
+      margin-bottom:12px;
+      font-size:0.9rem;
     }
 
-    footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 0.8rem;
-      color: #888;
+    h1.title{
+      margin:6px 0 10px;
+      font-size:1.75rem;
+      line-height:1.05;
+      letter-spacing: -0.2px;
     }
+    p.lead{
+      color:var(--muted);
+      margin:0 0 18px;
+      font-size:1rem;
+      max-width:62ch;
+    }
+
+    .features{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .feature{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      padding:14px;
+      border-radius:12px;
+      min-width:180px;
+      flex:1;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    }
+    .feature h4{ margin:0 0 6px; color:var(--pink); font-size:0.98rem }
+    .feature p{ margin:0; color:var(--muted); font-size:0.92rem }
+
+    /* hero image */
+    .hero-right{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      padding:8px;
+    }
+
+    .tv-wrap{
+      position:relative;
+      border-radius:18px;
+      padding:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 20px 60px rgba(255,105,180,0.06), inset 0 -6px 40px rgba(0,0,0,0.5);
+      transition: transform .5s ease;
+    }
+    .tv-wrap:hover{ transform: translateY(-6px) }
+
+    .tv{
+      display:block;
+      max-width:360px;
+      width:100%;
+      height:auto;
+      border-radius:12px;
+      box-shadow:
+        0 8px 40px rgba(255,105,180,0.07),
+        0 16px 80px rgba(255,215,0,0.04);
+      transition: transform .45s ease, filter .45s ease;
+      filter: drop-shadow(0 20px 60px rgba(255,105,180,0.12));
+    }
+
+    /* subtle glowing halo behind the TV */
+    .halo{
+      position:absolute;
+      inset:auto auto -40px -40px;
+      z-index:0;
+      width:420px;
+      height:420px;
+      filter: blur(70px) saturate(120%);
+      opacity:0.35;
+      background: radial-gradient(circle at 35% 35%, rgba(255,215,0,0.28), rgba(255,105,180,0.24) 45%, transparent 60%);
+      pointer-events:none;
+      transform:translateY(10%);
+    }
+
+    /* CTA area */
+    .cta{
+      margin-top:28px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .price{
+      color:var(--gold);
+      font-weight:800;
+      font-size:1.25rem;
+      letter-spacing:0.6px;
+    }
+    .cta a.btn{
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:700;
+      text-decoration:none;
+      color:#060606;
+      background: linear-gradient(90deg, var(--gold), var(--pink));
+      box-shadow: 0 10px 40px rgba(255,105,180,0.12), 0 6px 20px rgba(255,215,0,0.06);
+      transition: transform .22s ease, box-shadow .22s ease;
+      position:relative;
+      overflow:visible;
+    }
+    .cta a.btn::after{
+      content:"";
+      position:absolute;
+      inset:-6px;
+      border-radius:999px;
+      background: radial-gradient(circle, rgba(255,215,0,0.08), rgba(255,105,180,0.06));
+      filter: blur(12px);
+      opacity:0.9;
+      z-index:-1;
+    }
+    .cta a.btn:hover{ transform: translateY(-4px) scale(1.02); box-shadow: 0 22px 60px rgba(255,105,180,0.18) }
+
+    /* testimonials */
+    .testimonials{
+      margin-top:32px;
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,0.03);
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:14px;
+    }
+    @media (max-width:900px){ .testimonials{ grid-template-columns: 1fr; } }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      padding:14px;
+      border-radius:12px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .avatar{
+      flex:0 0 56px;
+      width:56px;
+      height:56px;
+      border-radius:999px;
+      display:inline-grid;
+      place-items:center;
+      background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,105,180,0.12));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .avatar svg{ width:46px; height:46px; }
+
+    .card .meta{ font-weight:700; font-size:0.96rem; color:#fff; margin-bottom:6px }
+    .card .city{ font-size:0.82rem; color:var(--muted); margin-left:6px; font-weight:600 }
+    .card p.comment{ margin:0; color:var(--muted); font-size:0.95rem; line-height:1.35 }
+
+    .stars{ color: #ffd700; font-size:0.92rem; margin-bottom:8px }
+
+    /* footer */
+    footer{
+      margin-top:26px;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.88rem;
+      padding-bottom:10px;
+    }
+
+    /* animate on scroll */
+    [data-animate]{ opacity:0; transform: translateY(28px); transition: all 0.7s cubic-bezier(.2,.9,.2,1); }
+    [data-animate].visible{ opacity:1; transform:none; }
+
   </style>
 </head>
 <body>
-  <header>SmartTV Official</header>
-  <img src="smarttv.png" alt="SmartTV Product" />
-  <h2>Nikmati hiburan tanpa batas hanya dengan satu sentuhan.</h2>
-  <a class="btn" href="https://mrtracked.github.io/SmartTv/" target="_blank">Pesan Sekarang</a>
-  <footer>© 2025 SmartTV Official</footer>
+  <main class="wrap" role="main">
+
+    <div class="brand" data-animate>SmartTV Premium</div>
+    <div class="subtle" data-animate>SmartTV Official — Tonton dengan Gaya dan Kualitas Maksimal</div>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-left" data-animate>
+        <div class="eyebrow">Penawaran Promo • Terbatas</div>
+        <h1 id="hero-title" class="title">Nikmati hiburan tanpa batas hanya dengan satu sentuhan.</h1>
+        <p class="lead">
+          SmartTV berlayar ultra-jernih, koneksi pintar, dan desain mewah hitam•emas•pink — sempurna untuk ruang tamu modern Anda.
+        </p>
+
+        <div class="features" aria-hidden="false">
+          <div class="feature">
+            <h4>🎬 Gambar Ultra HD</h4>
+            <p>Warna tajam dan kontras mendalam untuk setiap adegan.</p>
+          </div>
+          <div class="feature">
+            <h4>🌐 Koneksi Pintar</h4>
+            <p>Mudah tersambung ke ponsel, Wi-Fi, dan aplikasi favorit.</p>
+          </div>
+          <div class="feature">
+            <h4>💎 Desain Elegan</h4>
+            <p>Sentuhan premium dengan kombinasi warna yang memukau.</p>
+          </div>
+        </div>
+
+        <div class="cta" data-animate>
+          <div class="price">Promo Spesial — Stok Terbatas</div>
+          <a class="btn" href="https://mrtracked.github.io/SmartTv/" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+        </div>
+      </div>
+
+      <div class="hero-right" data-animate>
+        <div class="halo" aria-hidden="true"></div>
+        <div class="tv-wrap" role="img" aria-label="SmartTV">
+          <!-- Pastikan file gambar bernama smarttv.png di root repo -->
+          <img class="tv" src="smarttv.png" alt="SmartTV Product" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" aria-label="Testimoni Pelanggan" data-animate>
+      <div class="card">
+        <div class="avatar" aria-hidden="true">
+          <!-- simple avatar svg -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="avatar">
+            <circle cx="32" cy="32" r="30" fill="url(#g1)"/>
+            <defs>
+              <radialGradient id="g1" cx="0.5" cy="0.3">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#ffc107" stop-opacity="0.08"/>
+              </radialGradient>
+            </defs>
+            <g transform="translate(10,12)" fill="#222">
+              <ellipse cx="22" cy="26" rx="16" ry="10" fill="#222" opacity="0.18"/>
+              <circle cx="22" cy="12" r="8" fill="#222"/>
+            </g>
+          </svg>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;">
+            <div class="meta">Rina S. <span class="city">— Jakarta</span></div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="comment">“Gambarnya tajam banget, suara jernih, dan desainnya premium — pas banget di ruang tamu saya!”</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="avatar2">
+            <circle cx="32" cy="32" r="30" fill="url(#g2)"/>
+            <defs>
+              <linearGradient id="g2" x1="0" x2="1">
+                <stop offset="0" stop-color="#ff66cc" stop-opacity="0.14"/>
+                <stop offset="1" stop-color="#ffd700" stop-opacity="0.08"/>
+              </linearGradient>
+            </defs>
+            <g transform="translate(10,12)" fill="#222">
+              <ellipse cx="22" cy="26" rx="16" ry="10" fill="#222" opacity="0.18"/>
+              <circle cx="22" cy="12" r="8" fill="#222"/>
+            </g>
+          </svg>
+        </div>
+        <div style="flex:1">
+          <div class="meta">Andi P. <span class="city">— Surabaya</span></div>
+          <div class="stars">★★★★★</div>
+          <p class="comment">“Desain elegan dan performa mantap. Pembelian promo ini benar-benar worth it!”</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="avatar3">
+            <circle cx="32" cy="32" r="30" fill="url(#g3)"/>
+            <defs>
+              <radialGradient id="g3" cx="0.5" cy="0.3">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#ff66cc" stop-opacity="0.08"/>
+              </radialGradient>
+            </defs>
+            <g transform="translate(10,12)" fill="#222">
+              <ellipse cx="22" cy="26" rx="16" ry="10" fill="#222" opacity="0.18"/>
+              <circle cx="22" cy="12" r="8" fill="#222"/>
+            </g>
+          </svg>
+        </div>
+        <div style="flex:1">
+          <div class="meta">Lina W. <span class="city">— Bandung</span></div>
+          <div class="stars">★★★★★</div>
+          <p class="comment">“Awalnya ragu, tapi ternyata puas! Sambungan ke HP cepat dan praktis.”</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 SmartTV Official — Semua hak dilindungi.
+    </footer>
+
+  </main>
+
+  <script>
+    // Scroll animation (vanilla)
+    const items = document.querySelectorAll('[data-animate]');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.18});
+    items.forEach(i => obs.observe(i));
+  </script>
 </body>
 </html>
