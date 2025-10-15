@@ -10,6 +10,7 @@
       font-family: "Poppins", sans-serif;
       background-color: #0a0a0a;
       color: #fff;
+      overflow-x: hidden;
     }
 
     header {
@@ -28,9 +29,9 @@
     }
 
     .hero img {
-      width: 220px;
+      width: 250px;
       border-radius: 20px;
-      box-shadow: 0 0 25px rgba(255, 192, 203, 0.4);
+      box-shadow: 0 0 30px rgba(255, 192, 203, 0.4);
     }
 
     .hero h1 {
@@ -120,11 +121,23 @@
       font-weight: bold;
       border-radius: 30px;
       transition: 0.3s;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
+      animation: glow 2s infinite ease-in-out;
     }
 
     .cta a:hover {
       background: #222;
       transform: scale(1.05);
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 192, 203, 0.3), 0 0 30px rgba(255, 180, 0, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(255, 192, 203, 0.6), 0 0 50px rgba(255, 180, 0, 0.6);
+      }
     }
 
     footer {
@@ -134,21 +147,33 @@
       color: #777;
       font-size: 0.9em;
     }
+
+    /* ANIMASI SCROLL */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
 
-  <header>
+  <header data-animate>
     🌟 SmartTV Official 🌟
   </header>
 
-  <section class="hero">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Smart_TV.png" alt="SmartTV" />
+  <section class="hero" data-animate>
+    <img src="https://images.unsplash.com/photo-1606813903258-94f28b49e5a8?w=800" alt="SmartTV" />
     <h1>TV Pintar, Kualitas Premium!</h1>
     <p>Tingkatkan pengalaman menonton Anda dengan SmartTV elegan, jernih, dan penuh fitur modern.</p>
   </section>
 
-  <section class="features">
+  <section class="features" data-animate>
     <h2>Kenapa Pilih SmartTV Kami?</h2>
     <div class="grid">
       <div class="feature">
@@ -166,20 +191,35 @@
     </div>
   </section>
 
-  <section class="testimoni">
+  <section class="testimoni" data-animate>
     <h2>Testimoni Pelanggan</h2>
     <div class="testi-box">“SmartTV ini keren banget! Nonton jadi serasa di bioskop.” — Rina, Jakarta</div>
     <div class="testi-box">“Kualitas gambar dan suaranya mantap, worth it banget!” — Budi, Bandung</div>
   </section>
 
-  <section class="cta">
+  <section class="cta" data-animate>
     <h2>Penawaran Terbatas! Dapatkan SmartTV Sekarang!</h2>
-    <a href="https://mrtracked.github.io/SmartTv/" target="_blank">Lihat Penawaran</a>
+    <a href="https://mrtracked.github.io/SmartTv/" target="_blank">Pesan Sekarang</a>
   </section>
 
-  <footer>
+  <footer data-animate>
     © 2025 SmartTV Official. All rights reserved.
   </footer>
+
+  <script>
+    // Animasi scroll
+    const elements = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    elements.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
