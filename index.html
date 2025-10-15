@@ -8,218 +8,74 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background-color: #0a0a0a;
+      background-color: #000;
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
       overflow-x: hidden;
     }
 
     header {
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(90deg, #ff007f, #ffb400);
-      color: #fff;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to bottom right, #111, #1a1a1a);
-    }
-
-    .hero img {
-      width: 250px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 192, 203, 0.4);
-    }
-
-    .hero h1 {
-      font-size: 2.2em;
-      margin-top: 25px;
-      background: linear-gradient(90deg, #ffb400, #ff007f);
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ffd700, #ff7adf);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
     }
 
-    .hero p {
-      color: #ccc;
-      font-size: 1.1em;
-      max-width: 500px;
-      margin: 10px auto;
+    img {
+      max-width: 80%;
+      height: auto;
+      filter: drop-shadow(0 0 30px rgba(255, 192, 203, 0.4))
+              drop-shadow(0 0 60px rgba(255, 215, 0, 0.4));
+      margin-bottom: 1.5rem;
+      transition: transform 0.4s ease;
     }
 
-    .features {
-      background-color: #141414;
-      padding: 50px 20px;
-      text-align: center;
+    img:hover {
+      transform: scale(1.03);
     }
 
-    .features h2 {
-      color: #ffb400;
-      margin-bottom: 25px;
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #f5f5f5;
     }
 
-    .features .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .feature {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 192, 203, 0.15);
-    }
-
-    .feature h3 {
-      color: #ff007f;
-    }
-
-    .testimoni {
-      padding: 50px 20px;
-      text-align: center;
-      background: #0f0f0f;
-    }
-
-    .testimoni h2 {
-      color: #ffb400;
-      margin-bottom: 30px;
-    }
-
-    .testi-box {
-      background: #1b1b1b;
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 600px;
-      margin: 15px auto;
-      font-style: italic;
-      box-shadow: 0 0 10px rgba(255, 183, 0, 0.2);
-    }
-
-    .cta {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to right, #ff007f, #ffb400);
-    }
-
-    .cta h2 {
-      font-size: 1.8em;
-      margin-bottom: 25px;
-      color: #fff;
-    }
-
-    .cta a {
-      display: inline-block;
-      padding: 15px 40px;
-      background: #000;
-      color: #fff;
+    .btn {
+      background: linear-gradient(90deg, #ffcc00, #ff66cc);
+      color: #000;
+      font-weight: 600;
       text-decoration: none;
-      font-weight: bold;
-      border-radius: 30px;
-      transition: 0.3s;
-      position: relative;
-      box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
-      animation: glow 2s infinite ease-in-out;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
     }
 
-    .cta a:hover {
-      background: #222;
+    .btn:hover {
       transform: scale(1.05);
-    }
-
-    @keyframes glow {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(255, 192, 203, 0.3), 0 0 30px rgba(255, 180, 0, 0.3);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(255, 192, 203, 0.6), 0 0 50px rgba(255, 180, 0, 0.6);
-      }
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
     }
 
     footer {
-      background: #0a0a0a;
-      text-align: center;
-      padding: 15px;
-      color: #777;
-      font-size: 0.9em;
-    }
-
-    /* ANIMASI SCROLL */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-
-    [data-animate].visible {
-      opacity: 1;
-      transform: translateY(0);
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
-
-  <header data-animate>
-    🌟 SmartTV Official 🌟
-  </header>
-
-  <section class="hero" data-animate>
-    <img src="https://cdn.pixabay.com/photo/2016/11/29/06/18/television-1867340_1280.jpg" alt="SmartTV" />
-    <h1>TV Pintar, Kualitas Premium!</h1>
-    <p>Tingkatkan pengalaman menonton Anda dengan SmartTV elegan, jernih, dan penuh fitur modern.</p>
-  </section>
-
-  <section class="features" data-animate>
-    <h2>Kenapa Pilih SmartTV Kami?</h2>
-    <div class="grid">
-      <div class="feature">
-        <h3>🎬 Gambar Ultra HD</h3>
-        <p>Rasakan kejernihan visual yang luar biasa di setiap tayangan.</p>
-      </div>
-      <div class="feature">
-        <h3>📱 Koneksi Pintar</h3>
-        <p>Hubungkan ke ponsel, Wi-Fi, dan aplikasi favorit dengan mudah.</p>
-      </div>
-      <div class="feature">
-        <h3>💎 Desain Elegan</h3>
-        <p>Warna hitam-emas-pink yang mewah untuk tampilan ruang yang menawan.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimoni" data-animate>
-    <h2>Testimoni Pelanggan</h2>
-    <div class="testi-box">“SmartTV ini keren banget! Nonton jadi serasa di bioskop.” — Rina, Jakarta</div>
-    <div class="testi-box">“Kualitas gambar dan suaranya mantap, worth it banget!” — Budi, Bandung</div>
-  </section>
-
-  <section class="cta" data-animate>
-    <h2>Penawaran Terbatas! Dapatkan SmartTV Sekarang!</h2>
-    <a href="https://mrtracked.github.io/SmartTv/" target="_blank">Pesan Sekarang</a>
-  </section>
-
-  <footer data-animate>
-    © 2025 SmartTV Official. All rights reserved.
-  </footer>
-
-  <script>
-    // Animasi scroll
-    const elements = document.querySelectorAll('[data-animate]');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    elements.forEach(el => observer.observe(el));
-  </script>
-
+  <header>SmartTV Official</header>
+  <img src="smarttv.png" alt="SmartTV Product" />
+  <h2>Nikmati hiburan tanpa batas hanya dengan satu sentuhan.</h2>
+  <a class="btn" href="https://mrtracked.github.io/SmartTv/" target="_blank">Pesan Sekarang</a>
+  <footer>© 2025 SmartTV Official</footer>
 </body>
 </html>
